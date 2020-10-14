@@ -1,0 +1,22 @@
+<div align="left" style="width: 70%;">
+<h2> Usuario </h2>
+
+<form id="form" action="javascript:void(0);" enctype="multipart/form-data">
+	<label for="usuario">Usuario</label> <br>
+	<input name="usuario" type="text" value="" /> <br><br>
+	<label for="nombre">Nombre</label> <br>
+	<input name="nombre" type="text" value="" /> <br><br>
+	<label for="pass">Contraseña</label> <br>
+	<input name="pass" type="text" value="" /> <br><br>
+	<button type="submit">Guardar</button>
+</form>
+</div>
+<script>
+	$(document).ready(function() {
+		$.getScript("lib/vcl/nav.js", function() {
+			$("#form").submit(function(event) {
+				show("formulario", "resultform", "#view", $(this).serialize());
+			});
+		});
+	});
+</script>

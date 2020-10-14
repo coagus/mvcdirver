@@ -1,1 +1,27 @@
-<h1>Manos a la obra!</h1>
+<div align="center">
+	<a id="home">Home</a> | 
+	<a id="formulario">Formulario</a> | 
+	<a id="cargaCSV">Carga CSV</a>
+</div>
+
+<hr>
+
+<div align="center">
+    <div id="view" align="left" style="width: 70%;">
+</div>
+
+<script>
+	$(document).ready(function() {
+		$.getScript("lib/vcl/nav.js", function() {
+			$("#home").click(function() {
+				show("home", "index", "body", "");
+			});
+			$("#formulario").click(function() {
+				show("formulario", "index", "#view", "");
+			});
+			$("#cargaCSV").click(function() {
+				show("formulario", "cargarcsv", "#view", "");
+			});
+		});
+	});
+</script>

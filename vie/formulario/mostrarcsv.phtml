@@ -1,0 +1,12 @@
+<table border = "1">
+    <thead>
+        <tr><th>Usuario</th><th>Nombre</th><th>Contraseña</th></tr>
+    </thead>
+    <tbody>
+<?php 
+foreach($this->getCsv() as list($usuario, $nombre, $contraseña)): 
+    echo "<tr><td>$usuario</td><td>$nombre</td><td>$contraseña</td></tr>";
+endforeach; 
+?>
+    </tbody>
+</table>    

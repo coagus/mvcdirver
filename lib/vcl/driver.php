@@ -1,14 +1,17 @@
 <?php
-$controller = isset($_REQUEST['controller']) ? strtolower($_REQUEST['controller']) : 'home';
+$controllerCall = isset($_REQUEST['controller']) ? strtolower($_REQUEST['controller']) : 'home';
 $action     = isset($_REQUEST['action']) ? $_REQUEST['action'] : 'index';
 
-require_once __DIR__ . "/../../ctl/$controller.php";
+$dir = __DIR__ . "/../../ctl/$controllerCall.php";
 
-$controller = ucwords($controller) . 'Controller';
-$controller = new $controller($action);
+require_once file_exists($dir) ? $dir : __DIR__ . '/controller.php';
+$controller = (file_exists($dir) ? ucwords($controllerCall) : "") . 'Controller';
 
-call_user_func(array(
-  $controller,
-  $action
-));
+if (file_exists($dir)) {
+    $controller = new $controller($action);
+} else {
+    $controller = new $controller($controllerCall, $action);
+}
+
+call_user_func(array($controller, $action));
 ?>
