@@ -1,0 +1,37 @@
+<h1><?php echo $this->title; ?> 
+    <small>
+        [<?php echo $this->object->Id == '' ? 'Nuevo' : 'Editar'; ?>] 
+    </small> 
+    <button id="cancelar">Cancelar</button>
+</h1>
+
+<form id="form" action="javascript:void(0);" enctype="multipart/form-data">
+    <input name="Id" type="hidden" value="<?php echo $this->object->Id == '' ? '0' : $this->object->Id; ?>"/>
+    <?php 
+        foreach($this->object as $key => $value)	{
+        if ($key!='Id') {
+            $type = 'text';
+
+            if ($this->is_Date($value)) {
+                $type = 'date';
+                $value = date('Y-m-d',strtotime($value));
+            }
+            
+            echo "$key <br> <input name='$key' type='$type' value='$value'/> <br> <br>";
+        }
+    }?>
+    <button type="submit"> Guardar  </button>
+</form>
+
+<script>
+$(document).ready(function(){
+  $.getScript("lib/vcl/nav.js",function() {
+    $("#form").submit(function(event) {
+      show("<?php echo $this->controller; ?>","edit","#view",$(this).serialize());
+    });
+    $("#cancelar").click(function() {
+      show("<?php echo $this->controller; ?>","index","#view","");
+    });
+  });
+});
+</script>

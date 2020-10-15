@@ -1,0 +1,21 @@
+<div style="position: absolute; left: 50%; top: 30%; transform: translate(-50%, -50%); width:200px;">
+    <?php if ($this->getError() != '') {
+        echo "<strong>Error!</strong> ".$this->getError()." <br> <br>";
+    } ?>
+    <h2>Acceso al sistema</h2>
+    <form id="form" action="javascript:void(0);" enctype="multipart/form-data">
+        <input type="text" name = "Usuario" placeholder="Ingresa tu usuario" data-validacion-tipo="requerido" /> <br> <br>
+        <input type="password" name = "Password" placeholder="Ingresa tu contraseña" data-validacion-tipo="requerido" /> <br> <br>
+        <button type="submit">Ingresar</button>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $.getScript("lib/vcl/nav.js",function() {
+            $("#form").submit(function(event) {
+                show("home","setLogin","body",$(this).serialize());
+            });
+        });
+    });
+</script>

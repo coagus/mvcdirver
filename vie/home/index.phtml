@@ -1,7 +1,9 @@
 <div align="center">
 	<a id="home">Home</a> | 
 	<a id="formulario">Formulario</a> | 
-	<a id="cargaCSV">Carga CSV</a>
+	<a id="cargaCSV">Carga CSV</a> | 
+	<a id="tabla">Mantenimiento</a> | 
+	<a id="logout">Cerrar sesión</a>
 </div>
 
 <hr>
@@ -21,6 +23,12 @@
 			});
 			$("#cargaCSV").click(function() {
 				show("formulario", "cargarcsv", "#view", "");
+			});
+			$("#tabla").click(function() {
+				show("usuario", "index", "#view", "");
+			});
+			$("#logout").click(function() { 
+			    show("home","logout","body",""); 
 			});
 		});
 	});

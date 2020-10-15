@@ -1,0 +1,44 @@
+<h1><?php echo $this->title; ?> <button id="nuevo">Nuevo</button></h1>
+
+<table border = "1">
+    <thead>
+        <tr>
+            <?php foreach($this->object as $key => $value) { if ($key!='Id') echo "<th>$key</th>"; } ?>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($this->objectList as $r): ?>
+        <tr>
+            <?php foreach($r as $key => $value)	{ if ($key!='Id') echo "<td>$value</td>"; } ?>
+            <td> <button id="edit<?php echo $r->Id; ?>">Editar</button> </td>
+            <td> <button id="delete<?php echo $r->Id; ?>">Eliminar</button> </td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
+<script>
+	$(document).ready(function() {
+		$.getScript("lib/vcl/nav.js", function() {
+			$("#nuevo").click(function() {
+				show("<?php echo $this->controller; ?>", "edit", "#view", "");
+			});
+
+			<?php foreach($this->objectList as $r): ?>
+			$("#edit<?php echo $r->Id; ?>").click(function() {
+				show("<?php echo $this->controller; ?>", "edit", "#view", "IdEdit=<?php echo $r->Id;?>");
+			});
+
+			$("#delete<?php echo $r->Id; ?>").click(function() {
+				var deseaEliminar = confirm("¿Está seguro de eliminar?");
+
+				if (deseaEliminar == true) {
+					show("<?php echo $this->controller; ?>", "delete", "#view", "Id=<?php echo $r->Id; ?>");
+				}
+			});
+			<?php endforeach; ?>
+		});
+	});
+</script>
