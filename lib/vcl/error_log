@@ -1,9 +1,0 @@
-[14-Oct-2020 16:22:37 America/Chicago] PHP Fatal error:  Call to a member function getList() on null in /home3/coagus/fut.christianagustin.com/lib/mvc/controller.php on line 34
-[14-Oct-2020 23:12:21 America/Chicago] PHP Fatal error:  Class 'Usuario' not found in /home3/coagus/fut.christianagustin.com/lib/mvc/controller.php on line 27
-[15-Oct-2020 05:34:25 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/coagus/fut.christianagustin.com/lib/mvc/controller.php on line 53
-[15-Oct-2020 05:34:25 America/Chicago] PHP Fatal error:  Call to a member function save() on null in /home3/coagus/fut.christianagustin.com/lib/mvc/controller.php on line 61
-[15-Oct-2020 06:29:15 America/Chicago] PHP Fatal error:  Call to undefined method stdClass::getList() in /home3/coagus/fut.christianagustin.com/lib/mvc/controller.php on line 39
-[15-Oct-2020 06:31:34 America/Chicago] PHP Fatal error:  Call to undefined method stdClass::getList() in /home3/coagus/fut.christianagustin.com/lib/mvc/controller.php on line 39
-[15-Oct-2020 06:45:25 America/Chicago] PHP Fatal error:  Call to a member function delete() on null in /home3/coagus/fut.christianagustin.com/lib/mvc/controller.php on line 78
-[15-Oct-2020 09:50:44 America/Chicago] PHP Fatal error:  Cannot access private property HomeController::$error in /home3/coagus/fut.christianagustin.com/vie/home/login.phtml on line 2
-[15-Oct-2020 10:04:27 America/Chicago] PHP Fatal error:  Class 'Usuario' not found in /home3/coagus/fut.christianagustin.com/ctl/home.php on line 39

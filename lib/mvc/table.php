@@ -162,5 +162,13 @@ class Table {
             die($e->getMessage() . '<br/>' . $qry);
         }
     }
+    
+    protected function saveData($id, $data) {
+        if ($id == '') {
+            $this->createRow($data);
+        } else {
+            $this->updateRow($data);
+        }
+    }
 }
 ?>

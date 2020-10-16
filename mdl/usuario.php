@@ -11,18 +11,8 @@ class Usuario extends Table {
         parent::__construct('Usuario');
     }
     
-    public function clear() {
-        foreach (get_object_vars($this) as $key => $value) {
-            $this->$key = '';
-        }
-    }
-    
     public function save() {
-        if ($this->Id == '') {
-            $this->createRow(get_object_vars($this));
-        } else {
-            $this->updateRow(get_object_vars($this));
-        }
+        $this->saveData($this->Id, get_object_vars($this));
     }
     
     public function getWhere() {
