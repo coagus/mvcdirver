@@ -16,7 +16,7 @@ class HomeController extends Controller {
     public function setLogin() {
         $view = 'login';
         
-        if (isset($_REQUEST['Usuario'])) {
+        if (isset($_REQUEST['Usuario']) && $_REQUEST['Usuario']!="" && $_REQUEST['Password']!="") {
             $usr         = $_REQUEST['Usuario'];
             $pwd         = isset($_REQUEST['Password']) ? $_REQUEST['Password'] : '';
             $this->error = "usuario: $usr / pass: $pwd <br>";
@@ -27,7 +27,7 @@ class HomeController extends Controller {
                 $this->error = 'Usuario incorrecto.';
             }
         } else {
-            $this->error = 'No ingreso usuario';
+            $this->error = 'No ingreso alguno de los datos';
         }
         
         $this->view($view);

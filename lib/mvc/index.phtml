@@ -1,6 +1,11 @@
-<h1><?php echo $this->title; ?> <button id="nuevo">Nuevo</button></h1>
+<h2><?php echo $this->title; ?> 
+    <button type="button" class="btn btn-outline-success btn-sm" id="nuevo">
+        <i class='fas fa-plus'></i>
+        Nuevo
+    </button>
+</h2>
 
-<table border = "1">
+<table class="table table-hover table-sm">
     <thead>
         <tr>
             <?php foreach($this->object as $key => $value) { if ($key!='Id') echo "<th>$key</th>"; } ?>
@@ -12,8 +17,16 @@
         <?php foreach($this->objectList as $r): ?>
         <tr>
             <?php foreach($r as $key => $value)	{ if ($key!='Id') echo "<td>$value</td>"; } ?>
-            <td> <button id="edit<?php echo $r->Id; ?>">Editar</button> </td>
-            <td> <button id="delete<?php echo $r->Id; ?>">Eliminar</button> </td>
+            <td> 
+                <button class="btn btn-outline-primary btn-sm" id="edit<?php echo $r->Id; ?>">
+                    <i class='fas fa-edit'></i>
+                </button> 
+            </td>
+            <td> 
+                <button class="btn btn-outline-danger btn-sm" id="delete<?php echo $r->Id; ?>">
+                    <i class='fas fa-window-close'></i>
+                </button> 
+            </td>
         </tr>
         <?php endforeach; ?>
     </tbody>

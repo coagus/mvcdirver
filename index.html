@@ -1,23 +1,38 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-	<title>Titulo</title>
-	<link rel="icon" href="img/logo.png" type="image/ico" sizes="16x16">
-	<link rel="stylesheet" href="lib/css/style.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-</head>
-
-<body onload="StartPage()" valing="center">
-	<script>
-		function StartPage() {
-			$(document).ready(function() {
-				$.getScript("lib/vcl/nav.js", function() {
-					show("home", "index", "body", "");
-				});
-			});
-		}
-	</script>
-</body>
-
+    <head>
+    	<title>PHP VMC Bootstrap 4.5</title>
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    	<link rel="icon" href="img/logo.png" type="image/ico" sizes="16x16">
+    	<link rel="stylesheet" href="lib/css/style.css">
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    	
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+        
+        <style>
+            body  {
+                background: url("img/background.jpg") no-repeat center center fixed;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                background-size: cover;
+                -o-background-size: cover;
+            }
+        </style>
+    </head>
+    
+    <body onload="StartPage()" >
+    	<script>
+    		function StartPage() {
+    			$(document).ready(function() {
+    				$.getScript("lib/vcl/nav.js", function() {
+    					show("home", "index", "body", "");
+    				});
+    			});
+    		}
+    	</script>
+    </body>
 </html>

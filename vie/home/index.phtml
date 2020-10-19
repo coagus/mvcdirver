@@ -1,16 +1,37 @@
-<div align="center">
-	<a id="home">Home</a> | 
-	<a id="formulario">Formulario</a> | 
-	<a id="cargaCSV">Carga CSV</a> | 
-	<a id="tabla">Mantenimiento</a> | 
-	<a id="logout">Cerrar sesión</a>
-</div>
+<nav class="navbar navbar-expand-sm fixed-top navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">PHP MVC</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="formulario">Formulario</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="cargaCSV">Carga CSV</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="tabla">Mantenimiento</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="logout">
+                    Cerrar sesión
+                    <i class='fas fa-sign-out-alt'></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-<hr>
+<br><br>
 
-<div align="center">
-    <div id="view" align="left" style="width: 70%;">
-</div>
+<div id="view" class="container-md pb-3 pt-3 bg-white rounded-lg"></div>
 
 <script>
 	$(document).ready(function() {

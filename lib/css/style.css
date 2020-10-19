@@ -1,14 +1,14 @@
 a {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .body-content {
-  margin-top: 55px;
+    margin-top: 55px;
 }
 
 .center-nav {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }

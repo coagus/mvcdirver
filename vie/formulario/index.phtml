@@ -1,16 +1,35 @@
-<div align="left" style="width: 70%;">
-<h1> Usuario </h1>
+<h2> Usuario </h2>
+
+<hr>
 
 <form id="form" action="javascript:void(0);" enctype="multipart/form-data">
-	<label for="usuario">Usuario</label> <br>
-	<input name="usuario" type="text" value="" /> <br><br>
-	<label for="nombre">Nombre</label> <br>
-	<input name="nombre" type="text" value="" /> <br><br>
-	<label for="pass">Contraseña</label> <br>
-	<input name="pass" type="text" value="" /> <br><br>
-	<button type="submit">Guardar</button>
+    <div class="form-group row">
+        <label for="usuarioLabel" class="col-sm-2 col-form-label">Usuario</label>
+        <div class="col-sm-6">
+            <input type="text" name="usuario" class="form-control" id="usuarioLabel">
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <label for="nombreLabel" class="col-sm-2 col-form-label">Nombre</label>
+        <div class="col-sm-6">
+            <input type="text" name="nombre" class="form-control" id="nombreLabel">
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <label for="passLabel" class="col-sm-2 col-form-label">Contraseña</label>
+        <div class="col-sm-6">
+            <input type="text" name="pass" class="form-control" id="passLabel">
+        </div>
+    </div>
+    
+	<button type="submit" type="button" class="btn btn-outline-success"> 
+        <i class='fas fa-save'></i>
+        Guardar  
+    </button>
 </form>
-</div>
+
 <script>
 	$(document).ready(function() {
 		$.getScript("lib/vcl/nav.js", function() {
