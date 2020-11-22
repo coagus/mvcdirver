@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-sm bg-light" style="height: 40px;">
+    <button type="button" class="btn btn-light btn-sm" id="regresar">
+        <i class='fas fa-angle-double-left'></i>
+    </button>
+    <div class="navbar-brand">
+        &nbsp <?php echo $this->object->Id == '' ? " <i class='fas fa-user-plus'></i> Nuevo" : " <i class='fas fa-user-edit'></i> ".$this->object->Codigo; ?>
+    </div>
+</nav>
+
+<form id="form" action="javascript:void(0);" enctype="multipart/form-data" class="was-validated">
+    <input name="Id" type="hidden" value="<?php echo $this->object->Id; ?>"/>
+    <div class="row pt-2">
+        <div class="col-6">
+            <label for="Mundial">Año Mundial</label>
+            <input type="number" id="Mundial" name="Mundial" min="<?php echo date('Y');?>" max="<?php echo date('Y')+10;?>" 
+                value="<?php echo $this->object->Id=='' ? date('Y')+1 : $this->object->Mundial; ?>" class="form-control" 
+                placeholder="Ingrese Año de Mundial" required>
+        
+            <label for="Edad" class="pt-2">Edad</label>
+            <input type="number" id="Edad" name="Edad" min="8" max="30" value="<?php echo $this->object->Id=='' ? 15 : $this->object->Edad; ?>" 
+                class="form-control" placeholder="Ingrese la edad" required>
+        
+            <label for="Rango" class="pt-2">Rango de edad</label>
+            <input type="number" id="Rango" name="Rango" min="1" max="4" value="<?php echo $this->object->Id=='' ? 2 : $this->object->Rango; ?>" class="form-control" placeholder="Ingrese el rango de edad" required>
+            
+            <label for="Genero" class="pt-2">Género</label>
+            <select id="Genero" name="Genero"class="form-control">
+            <?php foreach($this->getListGenero() as $key => $value): ?>
+                <option value="<?php echo $value; ?>" <?php echo ($this->object->Id=='' ? '1' : $this->object->Genero) == $value ? 'selected' : ''; ?>><?php echo $key; ?></option>
+            <?php endforeach; ?>
+            </select>
+            <div class="pt-4">
+                <button class="btn btn-outline-success btn-lg" type="submit"><i class='fas fa-save'></i> Guardar</button>
+            </div>
+        </div>
+        <!--
+        <div class="col-6" align="center">
+            <h2>Selección Sub-15 Masculina</h2>
+            <h1>Mundial 2021</h1>
+            <div class="row">
+                <div class="col-6" align="center">
+                    Año de nacimiento del Mayor <br> <h3>2004</h3>
+                </div>
+                <div class="col-6" align="center">
+                    Año de nacimiento del Mayor <br> <h3>2006</h3>
+                </div>
+            </div>
+            <hr>
+            <h1>S15M210406</h1>
+            <button class="btn btn-outline-success btn-lg mr-2" type="submit"><i class='fas fa-save'></i> Guardar</button>
+        </div>
+        -->
+    </div>
+</form>
+
+<script>
+    $(document).ready(function(){
+        $.getScript("lib/vcl/nav.js",function() {
+            $("#form").submit(function(event) {
+                show("seleccion","guardar","#view",$(this).serialize());
+            });
+            $("#regresar").click(function() {
+                show("seleccion","index","#view","");
+            });
+        });
+    });
+</script>

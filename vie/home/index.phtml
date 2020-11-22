@@ -1,28 +1,38 @@
-<nav class="navbar navbar-expand-sm fixed-top navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">PHP MVC</a>
+<nav class="navbar navbar-expand-sm fixed-top navbar-dark bg-primary">
+    <a class="navbar-brand" href="#" id="logo">
+        <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+        FedeFut Guatemala
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#" id="home">Home</a>
+                <a class="nav-link" href="#" id="home">Inicio</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" id="formulario">Formulario</a>
+                <a class="nav-link" href="#" id="jugador">Jugadores</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" id="cargaCSV">Carga CSV</a>
+                <a class="nav-link" href="#" id="evaluacion">Evaluaciones</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" id="tabla">Mantenimiento</a>
+                <a class="nav-link" href="#" id="seleccion">Selecciones</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="usuario">Usuarios</a>
             </li>
         </ul>
         <ul class="navbar-nav">
             <li class="nav-item">
+                 <a class="nav-link" href="#" id="perfil">
+                    <i class='fas fa-user-cog'></i> Mi Perfil
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="#" id="logout">
-                    Cerrar sesión
-                    <i class='fas fa-sign-out-alt'></i>
+                    Salir <i class='fas fa-sign-out-alt'></i>
                 </a>
             </li>
         </ul>
@@ -31,22 +41,31 @@
 
 <br><br>
 
-<div id="view" class="container-md pb-3 pt-3 bg-white rounded-lg"></div>
+<div id="view" class="container-xl pb-3 pt-3 bg-white rounded-lg shadow p-3 mb-5"></div>
 
 <script>
 	$(document).ready(function() {
 		$.getScript("lib/vcl/nav.js", function() {
+		    $("#logo").click(function() {
+				show("home", "index", "body", "");
+			});
 			$("#home").click(function() {
 				show("home", "index", "body", "");
 			});
-			$("#formulario").click(function() {
-				show("formulario", "index", "#view", "");
+			$("#jugador").click(function() {
+				show("jugador", "index", "#view", "");
 			});
-			$("#cargaCSV").click(function() {
-				show("formulario", "cargarcsv", "#view", "");
+			$("#evaluacion").click(function() {
+				show("evaluacion", "index", "#view", "");
 			});
-			$("#tabla").click(function() {
+			$("#usuario").click(function() {
 				show("usuario", "index", "#view", "");
+			});
+			$("#seleccion").click(function() { 
+			    show("seleccion","index","#view",""); 
+			});
+			$("#perfil").click(function() { 
+			    show("usuario","abc","#view","IdEdit=<?php echo $_SESSION["Id"];?>"); 
 			});
 			$("#logout").click(function() { 
 			    show("home","logout","body",""); 

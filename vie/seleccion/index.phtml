@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-sm bg-light" style="height: 40px;">
+    <div class="navbar-brand">
+        <i class='fas fa-users'></i> 
+        <strong>Selecciones</strong>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <button class="btn btn-success btn-sm" id="nuevo">
+                    <i class='fas fa-plus-circle'></i> Nueva
+                </button>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class = "pt-2">
+    <table class="table table-hover table-sm">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Mundial</th>
+                <th>Edad</th>
+                <th>Año del Mayor</th>
+                <th>Año del Menor</th>
+                <th>Género</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php 
+                foreach($this->object->getList() as $r): ?>
+            <tr>
+                <td><?php echo $r->Codigo?></td>
+                <td><?php echo $r->Mundial; ?></td>
+                <td><?php echo "Sub-".$r->Edad?></td>
+                <td><?php echo $r->Mundial-$r->Edad?></td>
+                <td><?php echo $r->Mundial-$r->Edad+$r->Rango?></td>
+                <td><?php echo $this->getGenero($r->Genero); ?></td>
+                <td> 
+                    <button class="btn btn-outline-primary btn-sm float-right" id="edit<?php echo $r->Id; ?>">
+                        Editar <i class='fas fa-edit'></i>
+                    </button> 
+                </td>
+            </tr>
+            <?php endforeach; 
+            ?>
+        </tbody>
+    </table>
+</div>
+
+<script>
+	$(document).ready(function() {
+		$.getScript("lib/vcl/nav.js", function() {
+			$("#nuevo").click(function() {
+				show("seleccion", "abc", "#view", "");
+			});
+
+			<?php foreach($this->object->getList() as $r): ?>
+			$("#edit<?php echo $r->Id; ?>").click(function() {
+				show("seleccion", "abc", "#view", "IdEdit=<?php echo $r->Id;?>");
+			});
+			<?php endforeach; ?>
+		});
+	});
+</script>

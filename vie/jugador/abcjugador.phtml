@@ -1,0 +1,283 @@
+<nav class="navbar navbar-expand-sm bg-light" style="height: 40px;">
+    <button type="button" class="btn btn-light btn-sm" id="regresar">
+        <i class='fas fa-angle-double-left'></i>
+    </button>
+    <div class="navbar-brand">
+        &nbsp <?php echo $this->object->Id == '' ? " <i class='fas fa-user-plus'></i> Nuevo" : " <i class='fas fa-user-edit'></i> ".$this->object->Codigo; ?>
+    </div>
+</nav>
+
+<form id="form" action="javascript:void(0);" enctype="multipart/form-data" class="was-validated">
+    <input name="Id" type="hidden" value="<?php echo $this->object->Id; ?>"/>
+    <div class="row pt-2">
+        <div class="col-md-2 pr-0 pt-2">
+            <a href="#" data-toggle="modal" data-target="#fotoperfil" id="fotoperfilview">
+                <img src="<?php echo $this->object->Foto == "" ? "img/avatar.jpg" : $this->object->Foto;?>" class="img-thumbnail" alt="foto de jugador">
+                <input name="Foto" type="hidden" value="<?php echo $this->object->Foto; ?>"/>
+            </a>
+        </div>
+        <div class="col-md-10">
+            <div class="form-row">
+                <div class="col-md-3">
+                    <label for="Nombre1">1er. Nombre</label>
+                    <input type="text" id="Nombre1" name="Nombre1" value="<?php echo $this->object->Nombre1; ?>" class="form-control" placeholder="Ingrese 1er nombre" required>
+                </div>
+                <div class="col-md-3 ">
+                    <label for="Nombre2">2do. Nombre (3ro)</label>
+                    <input type="text" id="Nombre2" name="Nombre2" value="<?php echo $this->object->Nombre2; ?>" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <label for="Apellido1">1er. Apellido</label>
+                    <input type="text" id="Apellido1" name="Apellido1" value="<?php echo $this->object->Apellido1; ?>" class="form-control" placeholder="Ingrese 1er apellido" required>
+                </div>
+                <div class="col-md-3">
+                    <label for="Apellido2">2do. Apellido</label>
+                    <input type="text" id="Apellido2" name="Apellido2" value="<?php echo $this->object->Apellido2; ?>" class="form-control" placeholder="Ingrese 2do apellido" required>
+                </div>
+            </div>
+            <div class="form-row pt-1">
+                <div class="col-md-2">
+                    <label for="Genero">Género</label>
+                    <select id="Genero" name="Genero"class="form-control">
+                        <?php foreach($this->getListGenero() as $key => $value): ?>
+                             <option value="<?php echo $value; ?>" <?php echo ($this->object->Id=='' ? '1' : $this->object->Genero) == $value ? 'selected' : ''; ?>><?php echo $key; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="col-md-3 ">
+                    <label for="Cui">CUI</label>
+                    <input type="number" id="Cui" name="Cui" value="<?php echo $this->object->Cui; ?>" class="form-control" placeholder="Ingrese cui" required>
+                </div>
+                <div class="col-md-2">
+                    <label for="Teljugador">Teléfono</label>
+                    <input type="number" id="Teljugador" name="Teljugador" value="<?php echo $this->object->Teljugador; ?>" class="form-control" placeholder="Ingrese Tel" required>
+                </div>
+                <div class="col-md-5">
+                    <label for="Correo">Correo electrónico</label>
+                    <input type="text" id="Correo" name="Correo" value="<?php echo $this->object->Correo; ?>" class="form-control">
+                </div>
+            </div>
+            <div class="form-row pt-1">
+                <div class="col-md-4">
+                    <label for="Fechanac">Fecha Nacimiento</label>
+                    <input type="date" id="Fechanac" name="Fechanac" value="<?php echo $this->object->Fechanac; ?>" class="form-control" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="Deptonac">Departamento Nacimiento</label>
+                    <select id="Deptonac" name="Deptonac" class="form-control">
+                    <?php 
+                        $depto = $this->object->Id=='' ? '0' : $this->object->Deptonac;
+                        foreach($this->getDeptos() as $r): ?>
+                        <option value="<?php echo $r->Id; ?>" <?php echo $depto == $r->Id ? 'selected' : ''; ?>><?php echo $r->Departamento; ?></option>
+                    <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="Muninac">Municipio Nacimiento</label>
+                    <select id="Muninac" name="Muninac" class="form-control">
+                    <?php
+                        $muni = $this->object->Id=='' ? '0' : $this->object->Muninac;
+                        foreach($this->getMunis($depto) as $r): ?>
+                        <option value="<?php echo $r->Id; ?>" <?php echo $muni == $r->Id ? 'selected' : ''; ?>><?php echo $r->Municipio; ?></option>
+                    <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row pt-2">
+        <div class="col-md-9">
+            <div class="form-row pt-2">
+                <div class="col-md-2 ">
+                    <label for="Tiposangre">Tipo de Sangre</label>
+                    <select id="Tiposangre" name="Tiposangre" class="form-control">
+                        <?php foreach($this->getListTipoSangre() as $key => $value): ?>
+                             <option value="<?php echo $value; ?>" <?php echo ($this->object->Id=='' ? '0' : $this->object->Tiposangre) == $value ? 'selected' : ''; ?>><?php echo $key; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="Escolaridad">Escolaridad</label>
+                    <select id="Escolaridad" name="Escolaridad" class="form-control">
+                        <?php foreach($this->getListEscolaridad() as $key => $value): ?>
+                             <option value="<?php echo $value; ?>" <?php echo ($this->object->Id=='' ? '0' : $this->object->Escolaridad) == $value ? 'selected' : ''; ?>><?php echo $key; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="Alergias">Alergias</label>
+                    <input type="text" id="Alergias" name="Alergias" value="<?php echo $this->object->Alergias; ?>" class="form-control">
+                </div>
+            </div>
+            <div class="form-row pt-2">
+                <div class="col-md-6">
+                    <label for="Nombrepadre">Nombre del padre</label>
+                    <input type="text" id="Nombrepadre" name="Nombrepadre" value="<?php echo $this->object->Nombrepadre; ?>" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="Nombremadre">Nombre de la madre</label>
+                    <input type="text" id="Nombremadre" name="Nombremadre" value="<?php echo $this->object->Nombremadre; ?>" class="form-control">
+                </div>
+            </div>
+            <div class="form-row pt-2">
+                <div class="col-md-2">
+                    <label for="Telpadre">Teléfono Padre</label>
+                    <input type="number" id="Telpadre" name="Telpadre" value="<?php echo $this->object->Telpadre; ?>" class="form-control">
+                </div>
+                <div class="col-md-2">
+                    <label for="Telmadre">Teléfono Madre</label>
+                    <input type="number" id="Telmadre" name="Telmadre" value="<?php echo $this->object->Telmadre; ?>" class="form-control">
+                </div>
+                <div class="col-md-2">
+                    <label for="Nit">NIT</label>
+                    <input type="text" id="Nit" name="Nit" value="<?php echo $this->object->Nit; ?>" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <label for="Pasaporte">Pasaporte</label>
+                    <input type="number" id="Pasaporte" name="Pasaporte" value="<?php echo $this->object->Pasaporte; ?>" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <label for="Pasaporteven">Vencimiento</label>
+                    <input type="date" id="Pasaporteven" name="Pasaporteven" value="<?php echo $this->object->Pasaporteven; ?>" class="form-control">
+                </div>
+            </div>
+            <div class="form-row pt-2">
+                
+                <div class="col-md-3">
+                    <label for="Visa">Visa americana</label>
+                    <input type="number" id="Visa" name="Visa" value="<?php echo $this->object->Visa; ?>" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <label for="Visaven">Vencimiento</label>
+                    <input type="date" id="Visaven" name="Visaven" value="<?php echo $this->object->Visaven; ?>" class="form-control">
+                </div>
+                
+                <div class="col-md-3">
+                    <label for="Visamex">Visa mexicana</label>
+                    <input type="number" id="Visamex" name="Visamex" value="<?php echo $this->object->Visamex; ?>" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <label for="Visamexven">Vencimiento</label>
+                    <input type="date" id="Visamexven" name="Visamexven" value="<?php echo $this->object->Visamexven; ?>" class="form-control">
+                </div>
+            </div>
+            <div class="form-row pt-3 pl-1">
+                <button class="btn btn-outline-success btn-lg mr-2" type="submit"><i class='fas fa-save'></i> Guardar</button>
+                <?php if ($this->object->Id != '' && $this->object->Activo == '1') { ?>
+                <button class="btn btn-outline-danger btn-lg" id="desactivar"><i class='fas fa-user-alt-slash'></i> Desactivar</button>
+                <?php } else if ($this->object->Id != '' && $this->object->Activo == '0') { ?>
+                <button class="btn btn-outline-primary btn-lg" id="activar"><i class='fas fa-user-check' ></i> Activar</button>
+                <?php } ?>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <a href="#" data-toggle="modal" data-target="#fotocompleta" id="fotocompletaview">
+                <img src="<?php echo $this->object->Fotocompleta == "" ? "img/avatar-front.jpg" : $this->object->Fotocompleta;?>" class="img-thumbnail" alt="Foto cuerpo completo del jugador">
+                <input name="Fotocompleta" type="hidden" value="<?php echo $this->object->Fotocompleta; ?>"/>
+            </a>
+        </div>
+    </div>
+</form>
+
+<!-- MODAL PARA FOTO DE PERFIL -->
+
+<div class="modal fade" id="fotoperfil" tabindex="-1" aria-labelledby="fotoperfil" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cargar foto de perfil</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="form_fotoperfil" action="javascript:void(0);" enctype="multipart/form-data">
+                <input name="codigo" type="hidden" value="<?php echo $this->object->Codigo; ?>"/>
+                <input name="Id" type="hidden" value="<?php echo $this->object->Id; ?>"/>
+                <div class="modal-body">
+                    <div class="input-group ">
+                        <div class="custom-file">
+                            <input type="file" name='file_fotoperfil' class="custom-file-input" id="file_fotoperfil" required>
+                            <label class="custom-file-label" for="file_fotoperfil">Buscar fotografía...</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-success" data-dismiss="modal" id="form_fotoperfil_btn"> <i class='fas fa-upload'></i> Subir</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL PARA FOTO DE CUERPO ENTERO -->
+
+<div class="modal fade" id="fotocompleta" tabindex="-1" aria-labelledby="fotocompleta" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cargar foto de frente cuerpo entero</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="form_fotocompleta" action="javascript:void(0);" enctype="multipart/form-data">
+                <input name="codigo" type="hidden" value="<?php echo $this->object->Codigo; ?>"/>
+                <input name="Id" type="hidden" value="<?php echo $this->object->Id; ?>"/>
+                <div class="modal-body">
+                    <div class="input-group ">
+                        <div class="custom-file">
+                            <input type="file" name='file_fotocompleta' class="custom-file-input" id="file_fotocompleta" required>
+                            <label class="custom-file-label" for="file_fotocompleta">Buscar fotografía...</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-success" data-dismiss="modal" id="form_fotocompleta_btn"> <i class='fas fa-upload'></i> Subir</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $.getScript("lib/vcl/nav.js",function() {
+            $("#form").submit(function(event) {
+                show("jugador","guardar","#view",$(this).serialize());
+            });
+            $("#deactivar").click(function(event) {
+                show("jugador","desactivar","#view","Id=<?php echo $this->object->Id; ?>");
+            });
+            $("#activar").click(function(event) {
+                show("jugador","activar","#view","Id=<?php echo $this->object->Id; ?>");
+            });
+            $("#regresar").click(function() {
+                show("jugador","<?php echo $this->object->Id == '' ? 'index' : 'perfil'; ?>","#view","IdEdit=<?php echo $this->object->Id; ?>");
+            });
+            $("#Deptonac").change(function() { 
+                show("jugador","setmuni","#Muninac","depto="+$("#Deptonac").val()); 
+            });
+            $("#form_fotoperfil_btn").click(function(event) {
+                var form = $('#form_fotoperfil')[0];
+                var formData = new FormData(form);
+                var file_fotoperfil = $("#file_fotoperfil")[0];
+                formData.append(file_fotoperfil.name, file_fotoperfil.files[0]);
+                loadCSV("jugador","subirFotoPerfil","#fotoperfilview",formData);
+            });
+            $("#form_fotocompleta_btn").click(function(event) {
+                var form = $('#form_fotocompleta')[0];
+                var formData = new FormData(form);
+                var file_fotocompleta = $("#file_fotocompleta")[0];
+                formData.append(file_fotocompleta.name, file_fotocompleta.files[0]);
+                loadCSV("jugador","subirFotoCompleta","#fotocompletaview",formData);
+            });
+        });
+    });
+    
+    $(".custom-file-input").on("change", function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+</script>

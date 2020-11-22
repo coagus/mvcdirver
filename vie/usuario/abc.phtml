@@ -1,0 +1,84 @@
+<nav class="navbar navbar-expand-sm bg-light" style="height: 40px;">
+    <?php if ($this->object->Id == $_SESSION["Id"]) { ?>
+    <div class="navbar-brand">
+    <i class='fas fa-user-cog'></i> Mi Perfil
+    </div>
+    <?php } else { ?>
+    <button type="button" class="btn btn-light btn-sm" id="regresar">
+        <i class='fas fa-angle-double-left'></i>
+    </button>
+    <div class="navbar-brand">
+        &nbsp <i class='fas fa-user-<?php echo $this->object->Id == '' ? "plus" : "edit" ?>'></i> <strong>Usuario</strong>
+    </div>
+    <?php } ?>
+</nav>
+
+<form id="form" action="javascript:void(0);" enctype="multipart/form-data" class="was-validated">
+    <input name="Id" type="hidden" value="<?php echo $this->object->Id; ?>"/>
+    <?php if ($this->object->Tipo == 2) { ?>
+    <input name="Tipo" type="hidden" value="<?php echo $this->object->Tipo; ?>"/>
+    <input name="Nombre" type="hidden" value="<?php echo $this->Nombre->Tipo; ?>"/>
+    <input name="Usuario" type="hidden" value="<?php echo $this->Usuario->Tipo; ?>"/>
+    <?php } else { ?>
+    <div class="row pt-2">
+        <div class="col-6">
+            <label for="Tipo">Tipo de Usuario</label>
+            <select id="Tipo" name="Tipo"class="form-control">
+            <?php 
+            foreach($this->getListTipo() as $key => $value): 
+                if ($value != 2) { ?>
+                <option value="<?php echo $value; ?>" <?php echo ($this->object->Id=='' ? '3' : $this->object->Tipo) == $value ? 'selected' : ''; ?>><?php echo $key; ?></option>
+            <?php 
+                }
+            endforeach; ?>
+            </select>
+        </div>
+    </div>
+    <div class="row pt-2">
+        <div class="col-6">
+            <label for="Nombre">Nombre</label>
+            <input type="text" id="Nombre" name="Nombre" value="<?php echo $this->object->Nombre; ?>" class="form-control" placeholder="Ingrese el nombre" required>
+        </div>
+    </div>
+    <div class="row pt-2">
+        <div class="col-6">
+            <label for="Usuario">Usuario</label>
+            <input type="text" id="Usuario" name="Usuario" value="<?php echo $this->object->Usuario; ?>" class="form-control" placeholder="Ingrese el usuario" required>
+        </div>
+    </div>
+    <?php } ?>
+    <div class="row pt-2 pb-3">
+        <div class="col-6">
+            <label for="Password">Contraseña</label>
+            <input type="password" id="Password" name="Password" value="<?php echo $this->object->Password; ?>" class="form-control" placeholder="Ingrese la contraseña" required>
+        </div>
+    </div>
+    <div class="row pt-2">
+        <div class="col-2">
+            <button class="btn btn-outline-success btn" type="submit"><i class='fas fa-save'></i> Guardar</button>
+        </div>
+        <div class="col-4">
+            <?php if ($this->guardoPerfil()) { ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert" style="padding:6px;">
+                <strong>Guardado!</strong> Se guardo con éxito.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="padding: 3px 7px 3px 3px;">
+                    <span aria-hidden="true" style="height: 40px;">&times;</span>
+                </button>
+            </div>
+             <?php } ?>
+        </div>
+    </div>
+</form>
+
+<script>
+    $(document).ready(function(){
+        $.getScript("lib/vcl/nav.js",function() {
+            $("#form").submit(function(event) {
+                show("usuario","guardar","#view",$(this).serialize());
+            });
+            $("#regresar").click(function() {
+                show("usuario","index","#view","");
+            });
+        });
+    });
+</script>

@@ -1,15 +1,16 @@
 <?php
 require_once __DIR__ . '/../lib/mvc/table.php';
 
-class Usuario extends Table {
+class Seleccion extends Table {
     public $Id = '';
-    public $Usuario = '';
-    public $Nombre = '';
-    public $Password = '';
-    public $Tipo = "";
+    public $Codigo = '';
+    public $Edad = '';
+    public $Mundial = '';
+    public $Rango = '';
+    public $Genero = '';
     
     public function __CONSTRUCT() {
-        parent::__construct('Usuario');
+        parent::__construct('Seleccion');
     }
     
     public function save() {

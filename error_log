@@ -1,0 +1,8 @@
+[09-Nov-2020 18:53:32 America/Chicago] PHP Strict Standards:  Only variables should be passed by reference in /home3/coagus/fut.christianagustin.com/upload.php on line 8
+[09-Nov-2020 18:53:32 America/Chicago] PHP Warning:  move_uploaded_file(imb/fotoperfil/perfil.jpeg): failed to open stream: No such file or directory in /home3/coagus/fut.christianagustin.com/upload.php on line 21
+[09-Nov-2020 18:53:32 America/Chicago] PHP Warning:  move_uploaded_file(): Unable to move '/tmp/phpFOblYh' to 'imb/fotoperfil/perfil.jpeg' in /home3/coagus/fut.christianagustin.com/upload.php on line 21
+[09-Nov-2020 18:54:07 America/Chicago] PHP Strict Standards:  Only variables should be passed by reference in /home3/coagus/fut.christianagustin.com/upload.php on line 8
+[09-Nov-2020 18:54:07 America/Chicago] PHP Warning:  move_uploaded_file(img/fotoperfil/perfil.jpeg): failed to open stream: No such file or directory in /home3/coagus/fut.christianagustin.com/upload.php on line 21
+[09-Nov-2020 18:54:07 America/Chicago] PHP Warning:  move_uploaded_file(): Unable to move '/tmp/phpv55V0J' to 'img/fotoperfil/perfil.jpeg' in /home3/coagus/fut.christianagustin.com/upload.php on line 21
+[09-Nov-2020 18:59:11 America/Chicago] PHP Warning:  move_uploaded_file(img/fotoperfil/perfil.jpeg): failed to open stream: No such file or directory in /home3/coagus/fut.christianagustin.com/upload.php on line 22
+[09-Nov-2020 18:59:11 America/Chicago] PHP Warning:  move_uploaded_file(): Unable to move '/tmp/phpyHfCAh' to 'img/fotoperfil/perfil.jpeg' in /home3/coagus/fut.christianagustin.com/upload.php on line 22

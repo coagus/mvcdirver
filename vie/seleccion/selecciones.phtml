@@ -1,0 +1,44 @@
+<table class="table table-hover table-lg">
+    <thead>
+        <tr>
+            <th>Código de Seleccion</th>
+            <th>Tipo de Selección</th>
+            <th>Año del Mayor</th>
+            <th>Año del Menor</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody> 
+        <?php 
+            foreach($this->getSelecciones() as list($codigo, $tipo, $mayor, $menor, $creada, $mundial, $codtipo)):?>
+        <tr>
+            <td><strong><?php echo $codigo; ?></strong></td>
+            <td><?php echo $tipo; ?></td>
+            <td><?php echo $mayor; ?></td>
+            <td><?php echo $menor; ?></td>
+            <td> 
+            <?php if ($creada == 1) {?>
+                <span class="badge badge-success"><i class='fas fa-check-circle'></i> Creada </span> 
+            <?php } else {?>
+                <button class="btn btn-outline-primary btn-sm float-right" id="crear<?php echo $codtipo; ?>">
+                    <i class='fas fa-users'></i> Crear
+                </button> 
+            <?php } ?>
+            </td>
+        </tr>
+        <?php endforeach; 
+        ?>
+    </tbody>
+</table>
+
+<script>
+	$(document).ready(function() {
+		$.getScript("lib/vcl/nav.js", function() {
+			<?php foreach($this->getSelecciones() as list($c, $t, $ma, $me, $cr, $mundial, $tipo)): ?>
+			$("#crear<?php echo $tipo; ?>").click(function() {
+				show("seleccion", "crear", "#sel", "Mundial=<?php echo $mundial;?>&Tipo=<?php echo $tipo;?>");
+			});
+			<?php endforeach; ?>
+		});
+	});
+</script>

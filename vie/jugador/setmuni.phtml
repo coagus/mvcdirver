@@ -1,0 +1,4 @@
+            <?php   $depto = $_REQUEST['depto'];
+                    foreach($this->getMunis($depto) as $r): ?>
+                        <option value="<?php echo $r->Id; ?>" <?php echo $r->Id == $depto."01" ? "selected" : ""; ?> ><?php echo $r->Municipio; ?></option>
+            <?php   endforeach; ?>

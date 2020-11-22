@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-sm bg-light" style="height: 40px;">
+    <div class="navbar-brand">
+       <strong>Usuarios</strong>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <button class="btn btn-success btn-sm" id="nuevo">
+                    <i class='fas fa-user-plus'></i> Nuevo
+                </button>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class = "pt-2">
+    <table class="table table-hover table-sm">
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Nombre</th>
+                <th>Tipo de Usuario</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php 
+                foreach($this->object->getList() as $r): ?>
+            <tr>
+                <td><?php echo $r->Usuario;?></td>
+                <td><?php echo $r->Nombre;?></td>
+                <td><?php echo $this->getTipo($r->Tipo);?></td>
+                <td> 
+                    <button class="btn btn-outline-primary btn-sm float-right" id="editar<?php echo $r->Id; ?>">
+                        <i class='fas fa-user-edit'></i> Editar
+                    </button> 
+                </td>
+            </tr>
+            <?php endforeach; 
+            ?>
+        </tbody>
+    </table>
+</div>
+
+<script>
+	$(document).ready(function() {
+		$.getScript("lib/vcl/nav.js", function() {
+			$("#nuevo").click(function() {
+				show("usuario", "abc", "#view", "");
+			});
+
+			<?php foreach($this->object->getList() as $r): ?>
+			$("#editar<?php echo $r->Id; ?>").click(function() {
+				show("usuario", "abc", "#view", "IdEdit=<?php echo $r->Id;?>");
+			});
+			<?php endforeach; ?>
+		});
+	});
+</script>

@@ -1,0 +1,76 @@
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#"><i class='fas fa-weight'></i> Nutricional</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#"><i class='fas fa-user-md'></i> Médico</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#"><i class='fas fa-dumbbell'></i> Fisica</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#"><i class='fas fa-clipboard-check'></i> Técnica</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#"><i class='fas fa-street-view'></i> Táctica</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#"><i class='far fa-lightbulb'></i> Coach</a>
+    </li>
+</ul>
+
+<div class="row pt-2">
+    <div class="col-3">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <div class="pb-2">
+                <a class="btn btn-outline-success btn-block" id="nuevo_ev_nutri" >
+                    <i class='fas fa-plus'></i> Nuevo 
+                </a>
+            </div>
+            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
+                S20M210104 [<?php echo date('M');?>]
+            </a>
+            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
+                S17F210407
+            </a>
+            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
+                S15M210608
+            </a>
+            <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">
+                S15M230811
+            </a>
+        </div>
+    </div>
+    <div class="col-9">
+        <table class="table table-hover table-sm">
+            <thead>
+                <tr>
+                    <th>Jugador</th>
+                    <th>Nombre</th>
+                    <th>Peso (lb)</th>
+                    <th>Altura (cm)</th>
+                    <th>% de grasa</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                    //foreach($this->object->getList() as $r): ?>
+                <tr>
+                    <td>Codigo <?php //echo $r->Codigo?></td>
+                    <td>Juan Perez<?php //echo date('Y',strtotime($r->Fechanac)); ?></td>
+                    <td>105 <?php //echo $r->Nombre1?></td>
+                    <td>155 <?php //echo $r->Apellido1?></td>
+                    <td>20 <?php //echo $r->Apellido1?></td>
+                    <td> 
+                        <button class="btn btn-outline-primary btn-sm float-right" id="ver<?php //echo $r->Id; ?>">
+                            Ver <i class='far fa-address-card'></i>
+                        </button> 
+                    </td>
+                </tr>
+                <?php //endforeach; 
+                ?>
+            </tbody>
+        </table>
+    </div>
+</div>
