@@ -1,0 +1,44 @@
+[12-Mar-2021 17:47:55 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/coagus/ventas.christianagustin.com/lib/mvc/edit.phtml on line 15
+[12-Mar-2021 18:47:48 America/Chicago] PHP Fatal error:  Call to undefined function showField() in /home3/coagus/ventas.christianagustin.com/lib/mvc/index.phtml on line 18
+[12-Mar-2021 18:56:21 America/Chicago] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home3/coagus/ventas.christianagustin.com/mdl/usuario.php on line 26
+[12-Mar-2021 18:56:21 America/Chicago] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home3/coagus/ventas.christianagustin.com/mdl/usuario.php on line 26
+[12-Mar-2021 18:56:21 America/Chicago] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home3/coagus/ventas.christianagustin.com/mdl/usuario.php on line 26
+[12-Mar-2021 18:56:21 America/Chicago] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home3/coagus/ventas.christianagustin.com/mdl/usuario.php on line 26
+[12-Mar-2021 18:56:21 America/Chicago] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home3/coagus/ventas.christianagustin.com/mdl/usuario.php on line 26
+[12-Mar-2021 18:56:21 America/Chicago] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home3/coagus/ventas.christianagustin.com/mdl/usuario.php on line 26
+[12-Mar-2021 18:56:21 America/Chicago] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home3/coagus/ventas.christianagustin.com/mdl/usuario.php on line 26
+[12-Mar-2021 18:56:21 America/Chicago] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home3/coagus/ventas.christianagustin.com/mdl/usuario.php on line 26
+[12-Mar-2021 18:56:21 America/Chicago] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home3/coagus/ventas.christianagustin.com/mdl/usuario.php on line 26
+[12-Mar-2021 18:56:21 America/Chicago] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home3/coagus/ventas.christianagustin.com/mdl/usuario.php on line 26
+[12-Mar-2021 18:58:25 America/Chicago] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home3/coagus/ventas.christianagustin.com/mdl/usuario.php on line 26
+[12-Mar-2021 18:58:25 America/Chicago] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home3/coagus/ventas.christianagustin.com/mdl/usuario.php on line 26
+[12-Mar-2021 18:58:25 America/Chicago] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home3/coagus/ventas.christianagustin.com/mdl/usuario.php on line 26
+[12-Mar-2021 18:58:25 America/Chicago] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home3/coagus/ventas.christianagustin.com/mdl/usuario.php on line 26
+[12-Mar-2021 18:58:25 America/Chicago] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home3/coagus/ventas.christianagustin.com/mdl/usuario.php on line 26
+[12-Mar-2021 18:58:25 America/Chicago] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home3/coagus/ventas.christianagustin.com/mdl/usuario.php on line 26
+[12-Mar-2021 18:58:25 America/Chicago] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home3/coagus/ventas.christianagustin.com/mdl/usuario.php on line 26
+[12-Mar-2021 18:58:25 America/Chicago] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home3/coagus/ventas.christianagustin.com/mdl/usuario.php on line 26
+[12-Mar-2021 18:58:25 America/Chicago] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home3/coagus/ventas.christianagustin.com/mdl/usuario.php on line 26
+[12-Mar-2021 18:58:25 America/Chicago] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home3/coagus/ventas.christianagustin.com/mdl/usuario.php on line 26
+[12-Mar-2021 20:28:59 America/Chicago] PHP Catchable fatal error:  Object of class stdClass could not be converted to string in /home3/coagus/ventas.christianagustin.com/lib/mvc/index.phtml on line 32
+[12-Mar-2021 20:30:09 America/Chicago] PHP Fatal error:  Cannot use object of type stdClass as array in /home3/coagus/ventas.christianagustin.com/mdl/usuario.php on line 38
+[12-Mar-2021 20:32:37 America/Chicago] PHP Fatal error:  Cannot use object of type stdClass as array in /home3/coagus/ventas.christianagustin.com/mdl/usuario.php on line 38
+[13-Mar-2021 09:49:06 America/Chicago] PHP Fatal error:  Call to undefined method Usuario::hasValCatalogo() in /home3/coagus/ventas.christianagustin.com/lib/mvc/index.phtml on line 31
+[13-Mar-2021 09:49:37 America/Chicago] PHP Fatal error:  Call to undefined method Usuario::hasValCatalogo() in /home3/coagus/ventas.christianagustin.com/lib/mvc/index.phtml on line 31
+[13-Mar-2021 10:22:34 America/Chicago] PHP Fatal error:  Call to undefined method stdClass::hasCatalogo() in /home3/coagus/ventas.christianagustin.com/lib/mvc/edit.phtml on line 29
+[13-Mar-2021 10:24:36 America/Chicago] PHP Fatal error:  Call to undefined method stdClass::hasCatalogo() in /home3/coagus/ventas.christianagustin.com/lib/mvc/edit.phtml on line 29
+[13-Mar-2021 10:28:00 America/Chicago] PHP Fatal error:  Call to undefined method stdClass::hasCatalogo() in /home3/coagus/ventas.christianagustin.com/lib/mvc/edit.phtml on line 29
+[13-Mar-2021 13:27:21 America/Chicago] PHP Fatal error:  Call to protected method Table::getTitleList() from context 'Controller' in /home3/coagus/ventas.christianagustin.com/lib/mvc/index.phtml on line 9
+[13-Mar-2021 13:34:54 America/Chicago] PHP Fatal error:  Call to protected method Table::getTitleSingle() from context 'Controller' in /home3/coagus/ventas.christianagustin.com/lib/mvc/edit.phtml on line 12
+[14-Mar-2021 10:33:52 America/Chicago] PHP Warning:  call_user_func() expects parameter 1 to be a valid callback, class 'HomeController' does not have a method 'perfil' in /home3/coagus/ventas.christianagustin.com/lib/vcl/driver.php on line 23
+[14-Mar-2021 15:50:17 America/Chicago] PHP Fatal error:  Call to undefined function hideFieldView() in /home3/coagus/ventas.christianagustin.com/lib/mvc/viewReg.phtml on line 8
+[14-Mar-2021 21:32:50 America/Chicago] PHP Fatal error:  Call to undefined function validUnique() in /home3/coagus/ventas.christianagustin.com/lib/mvc/table.php on line 167
+[14-Mar-2021 21:33:39 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/coagus/ventas.christianagustin.com/lib/mvc/table.php on line 188
+[14-Mar-2021 21:34:41 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/coagus/ventas.christianagustin.com/lib/mvc/table.php on line 188
+[14-Mar-2021 21:35:28 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/coagus/ventas.christianagustin.com/lib/mvc/table.php on line 188
+[14-Mar-2021 21:35:43 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/coagus/ventas.christianagustin.com/lib/mvc/table.php on line 188
+[14-Mar-2021 21:36:31 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/coagus/ventas.christianagustin.com/lib/mvc/table.php on line 188
+[14-Mar-2021 21:38:39 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/coagus/ventas.christianagustin.com/lib/mvc/table.php on line 188
+[14-Mar-2021 21:40:59 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/coagus/ventas.christianagustin.com/lib/mvc/table.php on line 188
+[14-Mar-2021 22:06:19 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/coagus/ventas.christianagustin.com/lib/mvc/table.php on line 190
+[14-Mar-2021 22:06:19 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/coagus/ventas.christianagustin.com/lib/mvc/table.php on line 190

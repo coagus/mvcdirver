@@ -1,0 +1,48 @@
+<?php $usr = $this->getCurrentUser();?>
+<div class="text-center align-middle">
+    <h5>
+        <button class="btn btn-link float-left btn-sm" id="regresar">
+            <i class="fas fa-chevron-left" style='font-size:17px'></i>
+        </button>
+        <i class='fas fa-user-cog' style='font-size:17px'></i>
+        Perfil
+    </h5>
+</div>
+<hr class="mt-0 mb-0">
+<form id="form" action="javascript:void(0);" enctype="multipart/form-data">
+    <input name="Id" type="hidden" value="<?php echo $usr->Id; ?>"/>
+    
+    <div class="form-group row mt-1 mb-1">
+        <label for="Nombre" class="col-sm-2 col-form-label">Nombre</label>
+        <div class="col-sm-6">
+            <input type="text" value="<?php echo $usr->Nombre;?>" class="form-control" name="Nombre">
+        </div>
+    </div>
+    
+    <div class="form-group row mt-1 mb-1">
+        <label for="Password" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-6">
+            <input type="text" value="<?php echo $usr->Password;?>" class="form-control" name="Password">
+        </div>
+    </div>
+    
+    <div class="pt-2">
+        <button type="submit" type="button" class="btn btn-outline-success"> 
+            <i class='fas fa-save'></i>
+            Guardar  
+        </button>
+    </div>
+</form>
+
+<script>
+$(document).ready(function(){
+  $.getScript("lib/vcl/nav.js",function() {
+    $("#form").submit(function(event) {
+      show("home","perfil","body",$(this).serialize());
+    });
+    $("#regresar").click(function() {
+      show("home","index","body","");
+    });
+  });
+});
+</script>

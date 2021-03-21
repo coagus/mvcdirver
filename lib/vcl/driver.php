@@ -1,6 +1,6 @@
 <?php
 $controllerCall = 'home';
-$action = 'login';
+$action = 'logout';
 
 session_start();
 

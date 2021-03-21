@@ -1,57 +1,104 @@
-<h2><?php echo $this->title; ?> 
-    <button type="button" class="btn btn-outline-success btn-sm" id="nuevo">
-        <i class='fas fa-plus'></i>
-        Nuevo
-    </button>
-</h2>
+<div class="text-center align-middle">
+    <h5>
+        <button class="btn btn-link float-right btn-sm" id="nuevo">
+            <i class='fas fa-plus' style='font-size:17px'></i>
+        </button>
+        <button class="btn btn-link float-left btn-sm" id="regresar">
+            <i class="fas fa-chevron-left" style='font-size:17px'></i>
+        </button>
+        <?php echo $this->table->getTitleList(); ?>
+    </h5>
+</div> 
+
+<hr class="mt-1 mb-2">
+
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">
+        <i class="fas fa-search" style='font-size:17px'></i>
+    </span>
+  </div>
+  <input type="text" class="form-control" placeholder="Buscar..." aria-label="Username" aria-describedby="basic-addon1" id="search">
+</div>
 
 <table class="table table-hover table-sm">
     <thead>
         <tr>
-            <?php foreach($this->object as $key => $value) { if ($key!='Id') echo "<th>$key</th>"; } ?>
-            <th></th>
+            <?php 
+            foreach($this->table as $key => $value) { 
+                $show = $this->table->showField($key) ? '' : 'class="d-none d-lg-table-cell"';
+                echo $this->table->hideField($key) ? "": "<th $show>$key</th>";
+            } 
+            ?>
             <th></th>
         </tr>
     </thead>
-    <tbody>
-        <?php foreach($this->objectList as $r): ?>
+    <tbody id="list">
+        <?php 
+        foreach($this->table->getList() as $r): 
+            if ($this->table->showRegNoSuper($this->table->getTitleSingle(), $r)) {
+        ?>
         <tr>
-            <?php foreach($r as $key => $value)	{ if ($key!='Id') echo "<td>$value</td>"; } ?>
+            <?php 
+            foreach($r as $key => $value) { 
+                $show = $this->table->showField($key) ? '' : 'class="d-none d-lg-table-cell"';
+                $value = $this->table->hasCatalogo($key) ? $this->table->getValCatalogo($key, $value) : $value;
+                echo $this->table->hideField($key) ? "": "<td $show>$value</td>"; 
+            } 
+            ?>
             <td> 
-                <button class="btn btn-outline-primary btn-sm" id="edit<?php echo $r->Id; ?>">
-                    <i class='fas fa-edit'></i>
-                </button> 
-            </td>
-            <td> 
-                <button class="btn btn-outline-danger btn-sm" id="delete<?php echo $r->Id; ?>">
-                    <i class='fas fa-window-close'></i>
+                <button class="btn btn-link btn-sm float-right" id="view<?php echo $r->Id; ?>" data-toggle="modal" data-target="#viewModal">
+                    <i class='fas fa-eye' style='font-size:17px'></i>
                 </button> 
             </td>
         </tr>
-        <?php endforeach; ?>
+        <?php 
+            }
+        endforeach; 
+        ?>
     </tbody>
 </table>
+
+<!-- MODAL PARA VER REGISTRO -->
+
+<div class="modal" tabindex="-1" id="viewModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><?php echo $this->table->getTitleSingle(); ?></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="ver"></div>
+    </div>
+  </div>
+</div>
 
 <script>
 	$(document).ready(function() {
 		$.getScript("lib/vcl/nav.js", function() {
+		    $("#regresar").click(function() {
+				show("home", "index", "body", "");
+			});
+			
 			$("#nuevo").click(function() {
 				show("<?php echo $this->controller; ?>", "edit", "#view", "");
 			});
 
-			<?php foreach($this->objectList as $r): ?>
-			$("#edit<?php echo $r->Id; ?>").click(function() {
-				show("<?php echo $this->controller; ?>", "edit", "#view", "IdEdit=<?php echo $r->Id;?>");
-			});
-
-			$("#delete<?php echo $r->Id; ?>").click(function() {
-				var deseaEliminar = confirm("¿Está seguro de eliminar?");
-
-				if (deseaEliminar == true) {
-					show("<?php echo $this->controller; ?>", "delete", "#view", "Id=<?php echo $r->Id; ?>");
-				}
-			});
+			<?php foreach($this->table->getList() as $r): ?>
+                $("#view<?php echo $r->Id; ?>").click(function() {
+                    show("<?php echo $this->controller; ?>", "viewReg", "#ver", "IdView=<?php echo $r->Id;?>");
+                });
 			<?php endforeach; ?>
+			
+			 $("#search").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#list tr").filter(function() {
+                  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+              });
 		});
 	});
 </script>
+

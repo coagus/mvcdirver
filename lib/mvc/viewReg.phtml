@@ -1,0 +1,43 @@
+<?php 
+    $table = $this->table;
+    $reg = $this->table->getById($_REQUEST['IdView']); 
+?>
+<div class="modal-body">
+    <?php 
+    foreach($reg as $key => $value)	{
+        if (!$table->hideFieldView($key)) {
+            $value = $this->table->hasCatalogo($key) ? $this->table->getValCatalogo($key, $value) : $value;
+            
+            if ($this->is_Date($value)) {
+                $value = date('Y-m-d',strtotime($value));
+            } ?>
+    <div class="row mb-1 ml-1 mr-1">
+        <div class="col-sm-4 bg-secondary text-white"><?php echo $key;?></div>
+        <div class="col bg-light"><?php echo $value;?></div>
+    </div>
+    <?php
+        }
+    } ?>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-primary" data-dismiss="modal" id="edit">
+        <i class="fas fa-edit" style='font-size:17px'></i>
+        Editar
+    </button>
+    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">
+        <i class="fas fa-times-circle" style='font-size:17px'></i>
+        Close
+    </button>
+</div>
+
+<script>
+	$(document).ready(function() {
+		$.getScript("lib/vcl/nav.js", function() {
+		    $("#edit").click(function() {
+                setTimeout(function() { 
+        			show("<?php echo $this->controller; ?>", "edit", "#view", "IdEdit=<?php echo $reg->Id;?>");
+                }, 500);
+        	});
+        });
+	});
+</script>

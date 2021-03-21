@@ -37,18 +37,36 @@ class HomeController extends Controller {
         if (trim($usr) == '' || trim($pwd) == '')
             return false;
         
-        $usuario           = new Usuario();
-        $usuario->Usuario  = $usr;
+        $usuario = new Usuario();
+        $usuario->Usuario = $usr;
         $usuario->Password = $pwd;
-        $usr               = $usuario->getWhere();
-        $valido            = count($usr) == 1;
+        $usr = $usuario->getWhere();
+        $valido = count($usr) == 1;
         
         if ($valido) {
-            $_SESSION["Id"]      = $usr[0]->Id;
+            $_SESSION["Id"] = $usr[0]->Id;
             $_SESSION["Usuario"] = $usr[0]->Usuario;
         }
         
         return $valido;
+    }
+    
+    public function perfil() {
+        $view = 'perfil';
+        if (isset($_REQUEST['Id'])) {
+            $usuario = new Usuario();
+            $usuario->Id = $_REQUEST['Id'];
+            $usuario->Nombre = $_REQUEST['Nombre'];
+            $usuario->Password = $_REQUEST['Password'];
+            $usuario->save();
+            $view = 'index';
+        }
+        $this->view($view);
+    }
+    
+    public function getCurrentUser() {
+        $usr = new Usuario();
+        return $usr->getById($_SESSION["Id"]);
     }
     
     public function logout() {

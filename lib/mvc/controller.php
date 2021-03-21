@@ -1,8 +1,6 @@
 <?php
 class Controller {
-    protected $object = null;
-    protected $objectList = null;
-    protected $title;
+    protected $table = null;
     private $controller;
     private $action;
     private $isCRUD = false;
@@ -18,8 +16,7 @@ class Controller {
             if (file_exists($pathObject)) {
                 require_once $pathObject;
                 $table = ucwords($this->controller);
-                $this->object = new $table();
-                $this->title = $table;
+                $this->table = new $table();
                 $this->isCRUD = true;
             } else {
                 echo "No existe mantenimiento de ".ucwords($this->controller)." ($pathObject) ni vista $view a presentar";
@@ -36,9 +33,6 @@ class Controller {
             require_once $pathview;
         } else {
             if ($this->isCRUD) {
-                if ($view == "index")
-                    $this->objectList = $this->object->getList();
-                    
                 require_once __DIR__ . "/$view.phtml";
             } else {
                 echo "No se encuentra la vista $view";
@@ -50,32 +44,34 @@ class Controller {
         $this->view();
     }
     
+    public function viewReg() {
+        $this->view();
+    }
+    
     public function edit() {
         $view = '';
         
         if (isset($_REQUEST['Id'])) {
-            foreach ($this->object as $key => $value) {
+            foreach ($this->table as $key => $value) {
                 if ($key == 'Id') {
-                    $this->object->Id = $_REQUEST['Id'] == "0" ? '' : $_REQUEST['Id'];
+                    $this->table->Id = $_REQUEST['Id'] == "0" ? '' : $_REQUEST['Id'];
                 } else {
-                    $this->object->$key = $_REQUEST[$key];
+                    $this->table->$key = $_REQUEST[$key];
                 }
             }
             
-            $this->object->save();
-            $this->objectList = $this->object->getList();
-            $view = 'index';
+            if ($this->table->save()) {
+                $this->tableList = $this->table->getList();
+                $view = 'index';
+            }
         }
-        
-        if (isset($_REQUEST['IdEdit']))
-            $this->object = $this->object->getById($_REQUEST['IdEdit']);
 
         $this->view($view);
     }
     
     public function delete() {
         if (isset($_REQUEST['Id']))
-            $this->object->delete($_REQUEST['Id']);
+            $this->table->delete($_REQUEST['Id']);
             
         $this->view('index');
     }
@@ -93,6 +89,21 @@ class Controller {
         }
         
         return false;
+    }
+    
+    public function showError($e) {
+        echo 
+            '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>
+                    <i class="fas fa-bug" style="font-size:17px"></i> 
+                    Error Controlado!
+                </strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <hr>
+                '.$e.'
+            </div>';
     }
 }
 ?>

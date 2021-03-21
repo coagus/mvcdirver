@@ -1,39 +1,68 @@
-<h2>
-    <?php 
-        echo $this->object->Id == "" ? "<i class='fas fa-plus' style='font-size:24px'></i> " : "<i class='fas fa-edit' style='font-size:24px'></i> "; 
-        echo $this->title; 
-    ?> 
-    <button id="cancelar" type="button" class="btn btn-outline-danger btn-sm">
-        <i class='fas fa-angle-double-left'></i>
-        Cancelar
-    </button>
-</h2>
-<hr>
+<?php 
+    $table = $this->table;
+    if (isset($_REQUEST['IdEdit']))
+        $this->table = $this->table->getById($_REQUEST['IdEdit']);
+    $icon = $this->table->Id == "" ? "<i class='fas fa-plus' style='font-size:17px'></i> " : "<i class='fas fa-edit' style='font-size:17px'></i> "; 
+?>
+<div class="text-center align-middle">
+    <h5>
+        <button class="btn btn-link float-left btn-sm" id="regresar">
+            <i class="fas fa-chevron-left" style='font-size:17px'></i>
+        </button>
+        <?php echo $icon." ".$table->getTitleSingle(); ?>
+    </h5>
+</div>
+<hr class="mt-0 mb-0">
 <form id="form" action="javascript:void(0);" enctype="multipart/form-data">
-    <input name="Id" type="hidden" value="<?php echo $this->object->Id == '' ? '0' : $this->object->Id; ?>"/>
+    <input name="Id" type="hidden" value="<?php echo $this->table->Id == '' ? '0' : $this->table->Id; ?>"/>
     <?php 
-        foreach($this->object as $key => $value)	{
+    foreach($this->table as $key => $value)	{
         if ($key!='Id') {
-            $type = 'text';
-
-            if ($this->is_Date($value)) {
-                $type = 'date';
-                $value = date('Y-m-d',strtotime($value));
-            }
+            if ($table->hasCatalogo($key)) {
     ?>
-    <div class="form-group row">
+    <div class="form-group row mt-1 mb-1">
+        <label for="input<?php echo $key;?>" class="col-sm-2 col-form-label"><?php echo $key;?></label>
+        <div class="col-sm-6">
+    <?php
+                echo "    <select id='$key' name='$key' class='form-control'>";
+                foreach($table->getCatalogo($key) as list($val, $display)) {
+                    echo "<option value='$val' ".($val==$value ? "selected" : "").">$display</option>";
+                }
+                echo "    </select>"; 
+    ?>
+        </div>
+    </div>
+    <?php
+            } else {
+                $type = 'text';
+    
+                if ($this->is_Date($value)) {
+                    $type = 'date';
+                    $value = date('Y-m-d',strtotime($value));
+                }
+    ?>
+    <div class="form-group row mt-1 mb-1">
         <label for="input<?php echo $key;?>" class="col-sm-2 col-form-label"><?php echo $key;?></label>
         <div class="col-sm-6">
             <input type="<?php echo $type;?>" name="<?php echo $key;?>" value="<?php echo $value;?>" class="form-control" id="input<?php echo $key;?>">
         </div>
     </div>
     <?php
-        }
+            } // else hasCatalogo
+        } // if key=Id
     }?>
-    <button type="submit" type="button" class="btn btn-outline-success"> 
-        <i class='fas fa-save'></i>
-        Guardar  
-    </button>
+    <div class="pt-2">
+        <button type="submit" type="button" class="btn btn-outline-success"> 
+            <i class='fas fa-save'></i>
+            Guardar  
+        </button>
+        <?php if ($this->table->Id != "") {?>
+        <button type="button" class="btn btn-outline-danger pl-2" id="delete"> 
+            <i class='fas fa-trash'></i>
+            Eliminar  
+        </button>
+        <?php } ?>
+    </div>
 </form>
 
 <script>
@@ -42,9 +71,14 @@ $(document).ready(function(){
     $("#form").submit(function(event) {
       show("<?php echo $this->controller; ?>","edit","#view",$(this).serialize());
     });
-    $("#cancelar").click(function() {
+    $("#regresar").click(function() {
       show("<?php echo $this->controller; ?>","index","#view","");
     });
+    <?php if ($this->table->Id != "") {?>
+    $("#delete").click(function() {
+      show("<?php echo $this->controller; ?>","delete","#view","Id=<?php echo $this->table->Id;?>");
+    });
+    <?php } ?>
   });
 });
 </script>
