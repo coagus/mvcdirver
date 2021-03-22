@@ -1,8 +1,12 @@
-# PHP View Controller (phpVC)
-Solución Vista Controlador para PHP que agilice y facilite el desarrollo web.
+# PHP Model View Controller - Movil & PC hibrid
 
-Linea de desarrollo
+With this solution you can use your sistem in your phone and in your pc using MVC for PHP.
 
-Master: En esta esta la base de phpVC
-|-vclnav: Ejemplo de navegacion con phpVC
-|-mvc: Modelo Vista Controlador
+## Model (/mdl)
+In this folder create your models.
+
+## View (/vie)
+In this folder create your views.
+
+## Controller (/ctl)
+In this folder create your controllers.

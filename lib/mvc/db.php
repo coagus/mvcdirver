@@ -1,7 +1,7 @@
 <?php
-define('HOST'   , 'localhost');
-define('DBNAME' , 'coagus_ventas');
-define('USR'    , 'coagus_admin');
-define('PWD'    , 'Admin##');
+define('HOST', 'localhost');
+define('DBNAME', 'coagus_movil');
+define('USR', 'dev');
+define('PWD', 'dev');
 define('CHARSET', 'utf8');
 ?>
